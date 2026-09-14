@@ -1,2 +1,61 @@
-# HydroRIVERS-Data-Processing-and-Hydrological-Network-Visualization-Python
-Automated spatial data engineering pipeline using GeoPandas, OSMnx &amp; HydroRIVERS dataset to process vector shapefiles, perform boundary clipping, and render 4K dark-mode hydrological network maps.
+# 🌊 HydroRIVERS Spatial Data Pipeline & Hydrological Network Visualization
+
+## 📌 Overview & Technical Architecture
+High-resolution hydrological network visualization requires efficient vector processing, spatial topology handling, and dynamic stream classification. Standard GIS applications often struggle to dynamically filter and render multi-scale river reach hierarchies smoothly without pre-configured symbology.
+
+This project features an automated, end-to-end Python spatial data engineering pipeline utilizing global **HydroRIVERS (HydroSHEDS v1.0)** datasets[cite: 1, 2]. The programmatically built workflow downloads hydrographic shapefiles, clips hydrographic networks using OpenStreetMap (OSM) administrative boundaries, and renders publication-grade 4K dark-mode maps based on classical drainage order (`ORD_CLAS`)[cite: 1, 2].
+
+---
+
+## 📸 High-Resolution Output Showcase
+
+### 1. National Level: Bangladesh Multi-Color River Hierarchy
+<p align="center">
+  <img src="assets/Bangladesh_MultiColor_River_Basin_Md_Alzaber_4K.png" alt="Bangladesh MultiColor River Basin Map" width="100%">
+</p>
+
+### 2. District Level Spatial Analysis: Pabna & Dhaka River Networks
+<p align="center">
+  <img src="assets/Pabna_River_Basin_Md_Alzaber_4K.jpg" alt="Pabna District River Basin" width="49%">
+  <img src="assets/Dhaka_River_Basin_Md_Alzaber_4K.jpg" alt="Dhaka District River Network" width="49%">
+</p>
+
+---
+
+## 🛠️ Spatial Processing Pipeline Workflow
+
+1. **Automated Vector Acquisition:** Downloads and extracts global HydroRIVERS Asia dataset (`HydroRIVERS_v10_as.shp`) directly from HydroSHEDS servers upon execution[cite: 1, 2].
+2. **Dynamic Administrative Boundary Clipping:** Integrates `OSMnx` to fetch polygon boundaries on-the-fly and clips line vector layers using `GeoPandas`.
+3. **Stream Order Classification (`ORD_CLAS`):** Classifies hydrographic networks across 7 distinct stream hierarchies, assigning custom line weights and neon color profiles dynamically[cite: 1, 2]:
+   - **Order 1 (Neon Red):** Major Rivers (Padma & Jamuna)[cite: 1]
+   - **Order 2 (Bright Orange):** Secondary Rivers (Ichhamati, Dhaleshwari, etc.)[cite: 1]
+   - **Order 3 (Electric Yellow):** Tributaries & Regional Streams[cite: 1]
+   - **Order 4–7 (Green, Cyan, Purple, Hot Pink):** Minor Channels, Inland Streams, and Micro Canals[cite: 1]
+4. **Publication-Grade Cartography:** Renders aesthetic dark-mode maps with scale indicators, cardinal orientation arrows, custom legends, and watermark overlays[cite: 1].
+
+---
+
+## 📊 Technical Data Schema (HydroRIVERS Data)
+
+The underpinning vector processing pipeline leverages key hydrographic attributes:
+- `ORD_CLAS`: Classical river order classification (used for color mapping)[cite: 1, 2]
+- `ORD_STRA`: Strahler ordering system[cite: 2]
+- `DIS_AV_CMS`: Long-term average discharge ($m^3/s$)[cite: 2]
+- `UPLAND_SKM`: Total upstream catchment area ($km^2$)[cite: 2]
+
+---
+
+## 🧰 Tech Stack & Python Libraries
+- **Geospatial Processing:** `GeoPandas`, `OSMnx`, `Shapely`
+- **Visualization & Rendering:** `Matplotlib`, `Matplotlib.lines`
+- **Data Transfer & Automation:** `requests`, `zipfile`, `glob`, `os`
+- **Data Source:** HydroSHEDS / HydroRIVERS v1.0 (McGill University / WWF)[cite: 2]
+
+---
+
+## 🚀 Quick Start & Execution
+
+### 1. Clone the Repository
+```bash
+git clone [https://github.com/YOUR_USERNAME/HydroRIVERS-Data-Processing-and-Hydrological-Network-Visualization-Python.git](https://github.com/YOUR_USERNAME/HydroRIVERS-Data-Processing-and-Hydrological-Network-Visualization-Python.git)
+cd HydroRIVERS-Data-Processing-and-Hydrological-Network-Visualization-Python
