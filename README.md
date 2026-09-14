@@ -14,13 +14,7 @@ This project features an automated, end-to-end Python spatial data engineering p
   <img src="assets/Bangladesh_MultiColor_River_Basin_Md_Alzaber_4K.png" alt="Bangladesh MultiColor River Basin Map" width="100%">
 </p>
 
-### 2. District Level Spatial Analysis: Pabna & Dhaka River Networks
-<p align="center">
-  <img src="assets/Pabna_River_Basin_Md_Alzaber_4K.jpg" alt="Pabna District River Basin" width="49%">
-  <img src="assets/Dhaka_River_Basin_Md_Alzaber_4K.jpg" alt="Dhaka District River Network" width="49%">
-</p>
 
----
 
 ## 🛠️ Spatial Processing Pipeline Workflow
 
